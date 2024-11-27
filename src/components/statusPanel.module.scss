@@ -1,0 +1,16 @@
+@use '../styles/base' as base;
+
+.statusPanelContainer {
+	height: 7rem;
+	width: 15rem;
+	border: 1px solid red;
+	margin: 1rem;
+}
+
+@media (min-width: base.$layout-breakpoint) {
+	.statusPanelContainer {
+		height: 15rem;
+		width: 35rem;
+		margin: 2rem;
+	}
+}
