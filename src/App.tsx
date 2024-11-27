@@ -1,7 +1,14 @@
-import './App.css';
+import styles from './app.module.scss';
+import Calendar from './components/Calendar';
+import StatusPanel from './components/StatusPanel';
 
 function App() {
-	return <div>Calendar</div>;
+	return (
+		<div className={styles.mainWrapper}>
+			<StatusPanel />
+			<Calendar />
+		</div>
+	);
 }
 
 export default App;
