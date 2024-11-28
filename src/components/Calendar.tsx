@@ -11,12 +11,12 @@ const Calendar = (props: CalendarProps) => {
 	const { setModalIsOpen } = props;
 
 	const initializeDoorsArray = () => {
-		//If no array in localstorage
 		const storedDoorsArray = localStorage.getItem('doorsArray');
 
 		if (storedDoorsArray) {
 			return JSON.parse(storedDoorsArray);
 		}
+
 		const doorsArray = Array.from({ length: 24 }, (_, index) => ({
 			isOpen: false,
 			isUnlocked: validateDateOfDoor(index + 1),
@@ -42,7 +42,7 @@ const Calendar = (props: CalendarProps) => {
 		initializeDoorsArray()
 	);
 
-	const handleDoorOpenStatus = (
+	const toggleDoorOpenStatus = (
 		doorNumber: number,
 		isOpenCurrentStatus: boolean
 	) => {
@@ -64,7 +64,7 @@ const Calendar = (props: CalendarProps) => {
 					<Door
 						key={index}
 						isDoorOpen={isOpen}
-						toggleOpen={handleDoorOpenStatus}
+						toggleOpen={toggleDoorOpenStatus}
 						isUnlocked={isUnlocked}
 						doorNumber={doorNumber}
 						setModalIsOpen={setModalIsOpen}
