@@ -6,7 +6,8 @@ function App() {
 	return (
 		<div className={styles.mainWrapper}>
 			<StatusPanel />
-			<Calendar />
+			<Calendar setModalIsOpen={setModalIsOpen} />
+			<Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen} url={'url'} />
 		</div>
 	);
 }

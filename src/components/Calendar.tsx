@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './calendar.module.scss';
 import Door from './Door';
 import { type Door as DoorType } from '../types/door';
 
-const Calendar = () => {
+interface CalendarProps {
+	setModalIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const Calendar = (props: CalendarProps) => {
+	const { setModalIsOpen } = props;
+
 	const initializeDoorsArray = () => {
 		//If no array in localstorage
 		const storedDoorsArray = localStorage.getItem('doorsArray');
@@ -57,10 +63,11 @@ const Calendar = () => {
 				return (
 					<Door
 						key={index}
-						isOpen={isOpen}
+						isDoorOpen={isOpen}
 						toggleOpen={handleDoorOpenStatus}
 						isUnlocked={isUnlocked}
 						doorNumber={doorNumber}
+						setModalIsOpen={setModalIsOpen}
 					/>
 				);
 			})}
