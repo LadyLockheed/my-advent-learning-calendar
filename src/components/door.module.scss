@@ -1,0 +1,18 @@
+@use '../styles/base' as base;
+
+.doorFrame {
+	border: 1px solid blue;
+	height: 3rem;
+	width: 3rem;
+	align-self: center;
+	justify-self: center;
+	align-content: center;
+	// justify-content: center;
+}
+
+@media (min-width: base.$layout-breakpoint) {
+	.doorFrame {
+		height: 5rem;
+		width: 5rem;
+	}
+}
