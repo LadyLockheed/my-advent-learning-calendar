@@ -4,6 +4,24 @@ import Door from './Door';
 import { type Door as DoorType } from '../types/door';
 
 const Calendar = () => {
+	const initializeDoorsArray = () => {
+		//If no array in localstorage
+		const storedDoorsArray = localStorage.getItem('doorsArray');
+
+		if (storedDoorsArray) {
+			return JSON.parse(storedDoorsArray);
+		}
+		const doorsArray = Array.from({ length: 24 }, (_, index) => ({
+			isOpen: false,
+			isUnlocked: validateDateOfDoor(index + 1),
+			doorNumber: index + 1, // Door numbers start from 1
+		}));
+
+		localStorage.setItem('doorsArray', JSON.stringify(doorsArray));
+
+		return doorsArray;
+	};
+
 	//The doors can only be opened from start december, and only if doors date is less than or equal to todays date
 	const validateDateOfDoor = (doorNumber: number): boolean => {
 		//! Do not forget to remove the customized date.
@@ -13,34 +31,29 @@ const Calendar = () => {
 
 		return isDecember && doorNumber <= todaysDate.getDate();
 	};
-	//TODO Den här borde flyttas någon annanstans
-	//Antagligen till context kanske, hämtas från localstorage
-	const doorsArray = Array.from({ length: 24 }, (_, index) => ({
-		isOpen: false,
-		isUnlocked: validateDateOfDoor(index + 1),
-		doorNumber: index + 1, // Door numbers start from 1
-	}));
 
-	//TODO Döpa om doors till calendardoors kanske?
-	const [doors, setDoors] = useState<DoorType[]>(doorsArray);
+	const [calendarDoors, setCalendarDoors] = useState<DoorType[]>(
+		initializeDoorsArray()
+	);
 
 	const handleDoorOpenStatus = (
 		doorNumber: number,
 		isOpenCurrentStatus: boolean
 	) => {
-		const newDoorsArray = doors.map((door) => {
+		const newDoorsArray = calendarDoors.map((door) => {
 			if (door.doorNumber === doorNumber) {
 				return { ...door, isOpen: !isOpenCurrentStatus };
 			}
 			return door;
 		});
 
-		setDoors(newDoorsArray);
+		setCalendarDoors(newDoorsArray);
+		localStorage.setItem('doorsArray', JSON.stringify(newDoorsArray));
 	};
 
 	return (
 		<div className={styles.calendar}>
-			{doors.map(({ isOpen, isUnlocked, doorNumber }, index) => {
+			{calendarDoors.map(({ isOpen, isUnlocked, doorNumber }, index) => {
 				return (
 					<Door
 						key={index}
