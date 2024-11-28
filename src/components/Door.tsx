@@ -8,6 +8,14 @@ interface DoorProps {
 const Door = (props: DoorProps) => {
 	const { isOpen, isUnlocked, doorNumber } = props;
 
-	return <div className={styles.doorFrame}>{doorNumber}</div>;
+	return (
+		<button
+			className={`${styles.doorFrame} ${isOpen ? styles.open : styles.closed}`}
+			disabled={!isUnlocked}
+			onClick={() => console.log('try to open door')}
+		>
+			{doorNumber}
+		</button>
+	);
 };
 export default Door;

@@ -1,13 +1,21 @@
 @use '../styles/base' as base;
 
 .doorFrame {
+	all: unset;
 	border: 1px solid blue;
 	height: 3rem;
 	width: 3rem;
 	align-self: center;
 	justify-self: center;
 	align-content: center;
-	// justify-content: center;
+}
+
+.doorFrame:hover {
+	cursor: pointer;
+}
+
+.doorFrame:disabled {
+	background-color: red;
 }
 
 @media (min-width: base.$layout-breakpoint) {
@@ -15,4 +23,12 @@
 		height: 5rem;
 		width: 5rem;
 	}
+}
+
+.open {
+	background: black;
+}
+
+.closed {
+	background: lightgreen;
 }
