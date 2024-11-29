@@ -1,19 +1,16 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import styles from './calendar.module.scss';
 import Door from './Door';
 import { type Door as DoorType } from '../types/door';
-import { initializeDoorsArray } from './utils/initializeDoorsArray';
 
 interface CalendarProps {
 	setModalIsOpen: Dispatch<SetStateAction<boolean>>;
+	calendarDoors: DoorType[];
+	setCalendarDoors: Dispatch<SetStateAction<DoorType[]>>;
 }
 
 const Calendar = (props: CalendarProps) => {
-	const { setModalIsOpen } = props;
-
-	const [calendarDoors, setCalendarDoors] = useState<DoorType[]>(
-		initializeDoorsArray()
-	);
+	const { setModalIsOpen, calendarDoors, setCalendarDoors } = props;
 
 	const toggleDoorOpenStatus = (
 		targetDoorNumber: number,
