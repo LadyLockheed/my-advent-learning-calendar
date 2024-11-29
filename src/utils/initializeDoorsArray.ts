@@ -1,10 +1,12 @@
 export const initializeDoorsArray = () => {
 	const storedDoorsArray = localStorage.getItem('doorsArray');
 
+	//If doorsArray exist in localStorage, parse
 	if (storedDoorsArray) {
 		return JSON.parse(storedDoorsArray);
 	}
 
+	//If localstorage is empty, create doors
 	const doorsArray = Array.from({ length: 24 }, (_, index) => ({
 		isOpen: false,
 		isUnlocked: validateDateOfDoor(index + 1),
@@ -20,6 +22,7 @@ export const initializeDoorsArray = () => {
 export const validateDateOfDoor = (doorNumber: number): boolean => {
 	//! Do not forget to remove the customized date.
 	const todaysDate = new Date('2021-11-16');
+
 	//! Do not forget to change the number back to 12. 11 is used during development
 	const isDecember = todaysDate.getMonth() + 1 === 11;
 
