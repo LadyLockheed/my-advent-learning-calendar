@@ -3,15 +3,13 @@ import styles from './app.module.scss';
 import Calendar from './components/Calendar';
 import Modal from './components/Modal';
 import StatusPanel from './components/StatusPanel';
-import { calendarData } from './data/calendarData';
-import { type Door as DoorType } from './types/door';
+import { type Door } from './types/door';
 import { initializeDoorsArray } from './utils/initializeDoorsArray';
 
 function App() {
 	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-	console.log(calendarData);
 
-	const [calendarDoors, setCalendarDoors] = useState<DoorType[]>(
+	const [calendarDoors, setCalendarDoors] = useState<Door[]>(
 		initializeDoorsArray()
 	);
 
