@@ -1,3 +1,6 @@
+import { calendarUrls } from '../data/calendarUrls';
+import { type Door } from '../types/door';
+
 export const initializeDoorsArray = () => {
 	const storedDoorsArray = localStorage.getItem('doorsArray');
 
@@ -7,12 +10,13 @@ export const initializeDoorsArray = () => {
 	}
 
 	//If localstorage is empty, create doors
-	const doorsArray = Array.from({ length: 24 }, (_, index) => ({
+	const doorsArray: Door[] = Array.from({ length: 24 }, (_, index) => ({
 		isOpen: false,
 		isUnlocked: validateDateOfDoor(index + 1),
 		doorNumber: index + 1, // Door numbers start from 1
+		url: calendarUrls[index].url,
 	}));
-
+	console.log(doorsArray);
 	localStorage.setItem('doorsArray', JSON.stringify(doorsArray));
 
 	return doorsArray;
