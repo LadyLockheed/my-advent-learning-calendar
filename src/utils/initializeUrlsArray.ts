@@ -1,7 +1,7 @@
-import { type CalendarUrl } from '../types/calendarUrl';
-import { adventUrls } from '../data/calendarUrls';
+import { type AdventUrl } from '../types/adventUrl';
+import { adventUrlsArray } from '../data/adventUrlsData';
 
-export const initializeUrlsArray = (): CalendarUrl[] => {
+export const initializeUrlsArray = (): AdventUrl[] => {
 	const storedUrlsArray = localStorage.getItem('urlsArray');
 
 	//If storedUrlsArray exist in localStorage, parse
@@ -10,7 +10,7 @@ export const initializeUrlsArray = (): CalendarUrl[] => {
 	}
 
 	//If localstorage is empty, set urlsArray
-	localStorage.setItem('urlsArray', JSON.stringify(adventUrls));
+	localStorage.setItem('urlsArray', JSON.stringify(adventUrlsArray));
 
-	return adventUrls;
+	return adventUrlsArray;
 };

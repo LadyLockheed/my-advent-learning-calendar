@@ -1,4 +1,4 @@
-export type CalendarUrl = {
+export type AdventUrl = {
 	url: string;
 	assignedDoor: number | null;
 };

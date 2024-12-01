@@ -1,6 +1,6 @@
-import { type CalendarUrl } from '../types/calendarUrl';
+import { type AdventUrl } from '../types/adventUrl';
 
-export const adventUrls: CalendarUrl[] = [
+export const adventUrlsArray: AdventUrl[] = [
 	{
 		url: 'https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/',
 		assignedDoor: null,

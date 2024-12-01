@@ -4,7 +4,7 @@ import Calendar from './components/Calendar';
 import Modal from './components/Modal';
 import StatusPanel from './components/StatusPanel';
 import { type Door } from './types/door';
-import { type CalendarUrl } from './types/calendarUrl';
+import { type AdventUrl } from './types/adventUrl';
 import { initializeDoorsArray } from './utils/initializeDoorsArray';
 import { initializeUrlsArray } from './utils/initializeUrlsArray';
 
@@ -13,7 +13,7 @@ function App() {
 	const [calendarDoors, setCalendarDoors] = useState<Door[]>(
 		initializeDoorsArray()
 	);
-	const [calendarUrls, setCalendarUrls] = useState<CalendarUrl[]>(
+	const [calendarUrls, setCalendarUrls] = useState<AdventUrl[]>(
 		initializeUrlsArray()
 	);
 	const [selectedDoor, setSelectedDoor] = useState<number | null>(null);
