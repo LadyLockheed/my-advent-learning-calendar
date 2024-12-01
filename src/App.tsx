@@ -28,7 +28,7 @@ function App() {
 
 	return (
 		<div className={styles.mainWrapper}>
-			<StatusPanel />
+			<StatusPanel calendarDoors={calendarDoors} />
 			<Calendar
 				setModalIsOpen={setModalIsOpen}
 				calendarDoors={calendarDoors}
