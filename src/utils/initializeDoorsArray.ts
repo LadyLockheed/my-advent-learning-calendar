@@ -1,4 +1,3 @@
-import { calendarUrls } from '../data/calendarUrls';
 import { type Door } from '../types/door';
 
 export const initializeDoorsArray = () => {
@@ -14,7 +13,6 @@ export const initializeDoorsArray = () => {
 		isOpen: false,
 		isUnlocked: canOpenDoor(index + 1),
 		doorNumber: index + 1, // Door numbers start from 1
-		url: calendarUrls[index].url,
 	}));
 	console.log(doorsArray);
 	localStorage.setItem('doorsArray', JSON.stringify(doorsArray));
