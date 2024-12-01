@@ -24,9 +24,9 @@ export const initializeDoorsArray = () => {
 
 //The doors can only be opened from start december, and only if doors date is less than or equal to todays date
 export const canOpenDoor = (doorNumber: number): boolean => {
+	const todaysDate = new Date();
 
-	//! Do not forget to change the number back to 12. 11 is used during development
-	const isDecember = todaysDate.getMonth() + 1 === 11;
+	const isDecember = todaysDate.getMonth() + 1 === 12;
 
 	return isDecember && doorNumber <= todaysDate.getDate();
 };
