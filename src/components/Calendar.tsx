@@ -7,11 +7,14 @@ interface CalendarProps {
 	setModalIsOpen: Dispatch<SetStateAction<boolean>>;
 	calendarDoors: DoorType[];
 	setCalendarDoors: Dispatch<SetStateAction<DoorType[]>>;
+	setSelectedDoor: Dispatch<SetStateAction<number | null>>;
 }
 
 const Calendar = (props: CalendarProps) => {
-	const { setModalIsOpen, calendarDoors, setCalendarDoors } = props;
+	const { setModalIsOpen, calendarDoors, setCalendarDoors, setSelectedDoor } =
+		props;
 
+	//TODO Should this be moved to Door component?
 	const toggleDoorOpenStatus = (
 		targetDoorNumber: number,
 		isOpenCurrentStatus: boolean
@@ -38,6 +41,7 @@ const Calendar = (props: CalendarProps) => {
 						isUnlocked={isUnlocked}
 						doorNumber={doorNumber}
 						setModalIsOpen={setModalIsOpen}
+						setSelectedDoor={setSelectedDoor}
 					/>
 				);
 			})}
