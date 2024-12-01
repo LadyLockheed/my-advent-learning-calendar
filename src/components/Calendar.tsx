@@ -14,37 +14,25 @@ const Calendar = (props: CalendarProps) => {
 	const { setModalIsOpen, calendarDoors, setCalendarDoors, setSelectedDoor } =
 		props;
 
-	//TODO Should this be moved to Door component?
-	const toggleDoorOpenStatus = (
-		targetDoorNumber: number,
-		isOpenCurrentStatus: boolean
-	) => {
-		const newDoorsArray = calendarDoors.map((door) => {
-			if (door.doorNumber === targetDoorNumber) {
-				return { ...door, isOpen: !isOpenCurrentStatus };
-			}
-			return door;
-		});
-
-		setCalendarDoors(newDoorsArray);
-		localStorage.setItem('doorsArray', JSON.stringify(newDoorsArray));
-	};
-
 	return (
 		<div className={styles.calendar}>
-			{calendarDoors.map(({ isOpen, isUnlocked, doorNumber }, index) => {
-				return (
-					<Door
-						key={index}
-						isDoorOpen={isOpen}
-						toggleOpen={toggleDoorOpenStatus}
-						isUnlocked={isUnlocked}
-						doorNumber={doorNumber}
-						setModalIsOpen={setModalIsOpen}
-						setSelectedDoor={setSelectedDoor}
-					/>
-				);
-			})}
+			{calendarDoors.map(
+				({ isOpen, isUnlocked, doorNumber, hasBeenOpened }, index) => {
+					return (
+						<Door
+							key={index}
+							isDoorOpen={isOpen}
+							isUnlocked={isUnlocked}
+							doorNumber={doorNumber}
+							setModalIsOpen={setModalIsOpen}
+							setSelectedDoor={setSelectedDoor}
+							hasBeenOpened={hasBeenOpened}
+							calendarDoors={calendarDoors}
+							setCalendarDoors={setCalendarDoors}
+						/>
+					);
+				}
+			)}
 		</div>
 	);
 };
