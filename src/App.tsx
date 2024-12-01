@@ -21,7 +21,7 @@ function App() {
 				calendarDoors={calendarDoors}
 				setCalendarDoors={setCalendarDoors}
 			/>
-			<Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen} url={'url'} />
+			<Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen} url={currentUrl} />
 		</div>
 	);
 }
