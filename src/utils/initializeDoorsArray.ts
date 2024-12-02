@@ -5,7 +5,13 @@ export const initializeDoorsArray = () => {
 
 	//If doorsArray exist in localStorage, parse
 	if (storedDoorsArray) {
-		return JSON.parse(storedDoorsArray);
+		const doorsArray: Door[] = JSON.parse(storedDoorsArray);
+
+		const updatedUnlockedStatusDoorsArray = doorsArray.map((door, index) => {
+			return { ...door, isUnlocked: canOpenDoor(index + 1) };
+		});
+
+		return updatedUnlockedStatusDoorsArray;
 	}
 
 	//If localstorage is empty, create doors
