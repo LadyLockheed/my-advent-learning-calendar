@@ -31,8 +31,8 @@ const Door = (props: DoorProps) => {
 	return (
 		<button
 			className={`${styles.doorFrame} ${
-				isDoorOpen ? styles.open : styles.closed
-			}`}
+				hasBeenOpened && styles.hasBeenOpened
+			} ${isDoorOpen && styles.doorOpen}`}
 			disabled={!isUnlocked}
 			onClick={() => {
 				toggleDoorOpenStatus(
@@ -58,7 +58,13 @@ const Door = (props: DoorProps) => {
 				}
 			}}
 		>
-			{doorNumber}
+			<span
+				className={`${styles.doorNumberText} ${
+					isUnlocked && styles.doorUnlockedText
+				} ${isUnlocked && !hasBeenOpened && styles.readyToOpen}`}
+			>
+				{doorNumber}
+			</span>
 		</button>
 	);
 };

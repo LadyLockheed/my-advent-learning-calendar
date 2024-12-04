@@ -1,21 +1,17 @@
 @use '../styles/base' as base;
 
+//All style should start with door locked and closed
 .doorFrame {
 	all: unset;
-	border: 1px solid blue;
+	border: 1px solid rgba(0, 0, 0, 0.466);
 	height: 3rem;
 	width: 3rem;
 	align-self: center;
 	justify-self: center;
-	align-content: center;
 }
 
 .doorFrame:hover {
 	cursor: pointer;
-}
-
-.doorFrame:disabled {
-	background-color: red;
 }
 
 @media (min-width: base.$layout-breakpoint) {
@@ -25,10 +21,27 @@
 	}
 }
 
-.open {
-	background: black;
+.hasBeenOpened {
+	border: 1px dashed black;
+	box-shadow: -7px -1px 7px rgb(245, 245, 174);
 }
 
-.closed {
-	background: lightgreen;
+.doorOpen {
+	background: rgb(245, 245, 174);
+	box-shadow: 1px 1px 10px rgb(245, 245, 174);
+	border: none;
+}
+
+.doorNumberText {
+	display: flex;
+	justify-content: center;
+	color: rgb(48, 47, 47);
+}
+
+.doorUnlockedText {
+	color: red;
+}
+
+.readyToOpen {
+	font-size: 2rem;
 }
