@@ -1,54 +1,55 @@
 import { Dispatch, SetStateAction } from 'react';
 import styles from './door.module.scss';
-import {
-	toggleDoorOpenStatus,
-	updateDoorHasBeenOpenedStatus,
-} from '../utils/doorUtils';
+import { updateDoorHasBeenOpenedStatus } from '../utils/doorUtils';
 import { type Door as DoorType } from '../types/door';
 
 interface DoorProps {
-	isDoorOpen: boolean;
 	isUnlocked: boolean;
 	doorNumber: number;
 	setModalIsOpen: Dispatch<SetStateAction<boolean>>;
+	isActive: boolean;
 	setSelectedDoor: Dispatch<SetStateAction<number | null>>;
+	selectedDoor: number | null;
 	hasBeenOpened: boolean;
 	calendarDoors: DoorType[];
 	setCalendarDoors: Dispatch<React.SetStateAction<DoorType[]>>;
 }
 const Door = (props: DoorProps) => {
 	const {
-		isDoorOpen,
 		isUnlocked,
 		doorNumber,
 		setModalIsOpen,
+		isActive,
 		setSelectedDoor,
+		selectedDoor,
 		hasBeenOpened,
 		calendarDoors,
 		setCalendarDoors,
 	} = props;
 
+	const isSelectedDoor = (): boolean => {
+		return doorNumber === selectedDoor;
+	};
+
+	const isDaysDoor = () => {
+		const date = new Date();
+
+		const currentDay = date.getDate();
+		console.log(doorNumber, currentDay);
+		return doorNumber === currentDay;
+	};
+
 	return (
 		<button
-			className={`${styles.doorFrame} ${
-				hasBeenOpened && styles.hasBeenOpened
-			} ${isDoorOpen && styles.doorOpen}`}
+			className={`${styles.doorFrame} ${isUnlocked && styles.doorUnlocked} ${
+				isSelectedDoor() && isActive && styles.doorOpen
+			} ${hasBeenOpened && styles.doorHasBeenOpened}`}
 			disabled={!isUnlocked}
 			onClick={() => {
-				toggleDoorOpenStatus(
-					doorNumber,
-					isDoorOpen,
-					calendarDoors,
-					setCalendarDoors
-				);
+				setModalIsOpen(true);
+				setSelectedDoor(doorNumber);
 
-				//Current door should be set only when opening it
-				//Modal should only open if door is closed
-				if (!isDoorOpen) {
-					setModalIsOpen(true);
-					setSelectedDoor(doorNumber);
-				}
-				//Update if door has been opened once
+				//Update when door opens first time
 				if (!hasBeenOpened) {
 					updateDoorHasBeenOpenedStatus(
 						doorNumber,
@@ -60,8 +61,8 @@ const Door = (props: DoorProps) => {
 		>
 			<span
 				className={`${styles.doorNumberText} ${
-					isUnlocked && styles.doorUnlockedText
-				} ${isUnlocked && !hasBeenOpened && styles.readyToOpen}`}
+					isUnlocked && styles.doorUnlockedNumberText
+				}  ${isDaysDoor() && styles.currentDayText}`}
 			>
 				{doorNumber}
 			</span>

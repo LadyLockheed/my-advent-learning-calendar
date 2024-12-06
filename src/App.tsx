@@ -31,9 +31,11 @@ function App() {
 			<StatusPanel calendarDoors={calendarDoors} />
 			<Calendar
 				setModalIsOpen={setModalIsOpen}
+				modalIsOpen={modalIsOpen}
 				calendarDoors={calendarDoors}
 				setCalendarDoors={setCalendarDoors}
 				setSelectedDoor={setSelectedDoor}
+				selectedDoor={selectedDoor}
 			/>
 			<Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen} url={currentUrl} />
 		</div>
