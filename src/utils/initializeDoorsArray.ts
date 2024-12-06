@@ -16,12 +16,11 @@ export const initializeDoorsArray = () => {
 
 	//If localstorage is empty, create doors
 	const doorsArray: Door[] = Array.from({ length: 24 }, (_, index) => ({
-		isOpen: false,
 		isUnlocked: canOpenDoor(index + 1),
 		doorNumber: index + 1, // Door numbers start from 1,
 		hasBeenOpened: false,
 	}));
-	console.log(doorsArray);
+
 	localStorage.setItem('doorsArray', JSON.stringify(doorsArray));
 
 	return doorsArray;
