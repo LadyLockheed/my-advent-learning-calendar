@@ -37,7 +37,19 @@ function App() {
 				setSelectedDoor={setSelectedDoor}
 				selectedDoor={selectedDoor}
 			/>
-			<Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen} url={currentUrl} />
+			<Modal
+				isOpen={modalIsOpen}
+				setIsOpen={setModalIsOpen}
+				url={currentUrl}
+				selectedDoor={selectedDoor}
+			/>
+			{/* <div className={styles.starWrapper}>
+				<div className={styles.star}></div>
+				<div className={styles.star}></div>
+				<div className={styles.star}></div>
+				<div className={styles.star}></div>
+				<div className={styles.star}></div>
+			</div> */}
 		</div>
 	);
 }
