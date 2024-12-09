@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
 import { AdventUrl } from '../types/adventUrl';
 
-export const pickRandomUnassignedUrl = (
+const pickRandomUnassignedUrl = (
 	calendarUrls: AdventUrl[]
 ): [number, string] => {
 	const unAssignedUrls = calendarUrls.filter(
