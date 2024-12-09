@@ -18,7 +18,7 @@ export const updateDoorHasBeenOpenedStatus = (
 	localStorage.setItem('doorsArray', JSON.stringify(newDoorsArray));
 };
 
-export const countUnopenedAvailableDoors = (calendarDoors: Door[]): number => {
+export const countUnopenedUnlockedDoors = (calendarDoors: Door[]): number => {
 	const unopenedDoors = calendarDoors.filter(
 		(door) => !door.hasBeenOpened && door.isUnlocked
 	);
