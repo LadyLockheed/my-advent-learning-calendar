@@ -1,16 +1,19 @@
 import { type AdventUrl } from '../types/adventUrl';
 import { adventUrlsArray } from '../data/adventUrlsData';
+import {
+	setLocalStorageValue,
+	getLocalStorageValue,
+} from '../utils/localStorageUtils';
 
 export const initializeUrlsArray = (): AdventUrl[] => {
-	const storedUrlsArray = localStorage.getItem('urlsArray');
+	const storedUrlsArray = getLocalStorageValue<AdventUrl[]>('urlsArray');
 
-	//If storedUrlsArray exist in localStorage, parse
 	if (storedUrlsArray) {
-		return JSON.parse(storedUrlsArray);
+		return storedUrlsArray;
 	}
 
 	//If localstorage is empty, set urlsArray
-	localStorage.setItem('urlsArray', JSON.stringify(adventUrlsArray));
+	setLocalStorageValue('urlsArray', adventUrlsArray);
 
 	return adventUrlsArray;
 };

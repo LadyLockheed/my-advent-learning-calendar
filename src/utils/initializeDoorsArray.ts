@@ -1,15 +1,18 @@
 import { type Door } from '../types/door';
+import {
+	setLocalStorageValue,
+	getLocalStorageValue,
+} from '../utils/localStorageUtils';
 
-export const initializeDoorsArray = () => {
-	const storedDoorsArray = localStorage.getItem('doorsArray');
+export const initializeDoorsArray = (): Door[] => {
+	const storedDoorsArray = getLocalStorageValue<Door[]>('doorArray');
 
-	//If doorsArray exist in localStorage, parse
 	if (storedDoorsArray) {
-		const doorsArray: Door[] = JSON.parse(storedDoorsArray);
-
-		const updatedUnlockedStatusDoorsArray = doorsArray.map((door, index) => {
-			return { ...door, isUnlocked: canOpenDoor(index + 1) };
-		});
+		const updatedUnlockedStatusDoorsArray = storedDoorsArray.map(
+			(door, index) => {
+				return { ...door, isUnlocked: canOpenDoor(index + 1) };
+			}
+		);
 
 		return updatedUnlockedStatusDoorsArray;
 	}
@@ -21,7 +24,7 @@ export const initializeDoorsArray = () => {
 		hasBeenOpened: false,
 	}));
 
-	localStorage.setItem('doorsArray', JSON.stringify(doorsArray));
+	setLocalStorageValue('doorsArray', doorsArray);
 
 	return doorsArray;
 };
