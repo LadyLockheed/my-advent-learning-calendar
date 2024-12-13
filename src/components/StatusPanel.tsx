@@ -14,19 +14,17 @@ const StatusPanel = (props: StatusPanelProps) => {
 
 	const amountOfDoorsToOpen = countUnopenedUnlockedDoors(calendarDoors);
 
+	const dateMessage = `Today: ${day}/${month}`;
 	const amountMessage =
 		amountOfDoorsToOpen > 0
-			? `You have ${amountOfDoorsToOpen} ${
-					amountOfDoorsToOpen > 1 ? 'doors' : 'door'
-			  }  to open`
+			? `Doors to open: ${amountOfDoorsToOpen}`
 			: 'You have no doors left to open';
-	const dateMessage = `Today: ${day}/${month}`;
 
 	return (
 		<div className={styles.statusPanelContainer}>
 			<h1>Welcome</h1>
 			<p>{dateMessage}</p>
-			<h3>{amountMessage}</h3>
+			<p>{amountMessage}</p>
 		</div>
 	);
 };
