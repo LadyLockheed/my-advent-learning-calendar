@@ -6,7 +6,6 @@ export const updateDoorHasBeenOpenedStatus = (
 	calendarDoors: Door[],
 	setCalendarDoors: Dispatch<React.SetStateAction<Door[]>>
 ) => {
-	//Update hasBeenOpened status
 	const newDoorsArray = calendarDoors.map((door) => {
 		if (door.doorNumber === targetDoorNumber) {
 			return { ...door, hasBeenOpened: true };

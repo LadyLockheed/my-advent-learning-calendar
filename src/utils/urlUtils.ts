@@ -8,9 +8,6 @@ const pickRandomUnassignedUrl = (
 		(url) => url.assignedDoor === null
 	);
 
-	// if (unAssignedUrls.length === 0) {
-	// 	return null
-	// }
 	const randomIndex = Math.floor(Math.random() * unAssignedUrls.length);
 	const randomUrl = unAssignedUrls[randomIndex].url;
 
