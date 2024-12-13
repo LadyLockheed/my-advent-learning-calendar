@@ -43,13 +43,6 @@ function App() {
 				url={currentUrl}
 				selectedDoor={selectedDoor}
 			/>
-			{/* <div className={styles.starWrapper}>
-				<div className={styles.star}></div>
-				<div className={styles.star}></div>
-				<div className={styles.star}></div>
-				<div className={styles.star}></div>
-				<div className={styles.star}></div>
-			</div> */}
 		</div>
 	);
 }
