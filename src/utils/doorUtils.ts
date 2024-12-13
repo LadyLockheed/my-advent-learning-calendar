@@ -1,5 +1,6 @@
 import { type Door } from '../types/door';
 import { type ReactStateSetter } from '../types/stateSetter';
+import { localStorageKeys } from '../types/localStorageKey';
 
 export const updateDoorHasBeenOpenedStatus = (
 	targetDoorNumber: number,
@@ -14,7 +15,10 @@ export const updateDoorHasBeenOpenedStatus = (
 	});
 
 	setCalendarDoors(newDoorsArray);
-	localStorage.setItem('doorsArray', JSON.stringify(newDoorsArray));
+	localStorage.setItem(
+		localStorageKeys.doorsArrayKey,
+		JSON.stringify(newDoorsArray)
+	);
 };
 
 export const countUnopenedUnlockedDoors = (calendarDoors: Door[]): number => {

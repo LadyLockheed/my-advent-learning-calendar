@@ -1,5 +1,6 @@
 import { AdventUrl } from '../types/adventUrl';
 import { type ReactStateSetter } from '../types/stateSetter';
+import { localStorageKeys } from '../types/localStorageKey';
 
 const pickRandomUnassignedUrl = (
 	calendarUrls: AdventUrl[]
@@ -28,7 +29,10 @@ export const updateCalendarUrlsArray = (
 		return url;
 	});
 
-	localStorage.setItem('urlsArray', JSON.stringify(newCalendarUrlArray));
+	localStorage.setItem(
+		localStorageKeys.urlsArrayKey,
+		JSON.stringify(newCalendarUrlArray)
+	);
 	setCalendarUrls(newCalendarUrlArray);
 };
 
