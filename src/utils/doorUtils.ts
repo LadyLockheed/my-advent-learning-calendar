@@ -1,10 +1,10 @@
-import { Dispatch } from 'react';
 import { type Door } from '../types/door';
+import { type ReactStateSetter } from '../types/stateSetter';
 
 export const updateDoorHasBeenOpenedStatus = (
 	targetDoorNumber: number,
 	calendarDoors: Door[],
-	setCalendarDoors: Dispatch<React.SetStateAction<Door[]>>
+	setCalendarDoors: ReactStateSetter<Door[]>
 ) => {
 	const newDoorsArray = calendarDoors.map((door) => {
 		if (door.doorNumber === targetDoorNumber) {

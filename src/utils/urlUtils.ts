@@ -1,5 +1,5 @@
-import { Dispatch } from 'react';
 import { AdventUrl } from '../types/adventUrl';
+import { type ReactStateSetter } from '../types/stateSetter';
 
 const pickRandomUnassignedUrl = (
 	calendarUrls: AdventUrl[]
@@ -18,7 +18,7 @@ export const updateCalendarUrlsArray = (
 	selectedDoor: number,
 	randomIndex: number,
 	calendarUrls: AdventUrl[],
-	setCalendarUrls: Dispatch<React.SetStateAction<AdventUrl[]>>
+	setCalendarUrls: ReactStateSetter<AdventUrl[]>
 ) => {
 	const newCalendarUrlArray = calendarUrls.map((url, index) => {
 		if (index === randomIndex) {
@@ -35,7 +35,7 @@ export const updateCalendarUrlsArray = (
 export const getUrl = (
 	selectedDoor: number,
 	calendarUrls: AdventUrl[],
-	setCalendarUrls: Dispatch<React.SetStateAction<AdventUrl[]>>
+	setCalendarUrls: ReactStateSetter<AdventUrl[]>
 ): string => {
 	//Find the url with assigned door same as selectedDoor
 	const assignedAdventUrlObject = calendarUrls.find(

@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
 import styles from './modal.module.scss';
+import { type ReactStateSetter } from '../types/stateSetter';
 
 interface ModalProps {
 	isOpen: boolean;
 	url: string;
-	setIsOpen: Dispatch<SetStateAction<boolean>>;
+	setIsOpen: ReactStateSetter<boolean>;
 	selectedDoor: number | null;
 }
 

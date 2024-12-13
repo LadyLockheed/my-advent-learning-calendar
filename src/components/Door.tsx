@@ -1,18 +1,18 @@
-import { Dispatch, SetStateAction } from 'react';
 import styles from './door.module.scss';
 import { updateDoorHasBeenOpenedStatus } from '../utils/doorUtils';
 import { type Door as DoorType } from '../types/door';
+import { type ReactStateSetter } from '../types/stateSetter';
 
 interface DoorProps {
 	isUnlocked: boolean;
 	doorNumber: number;
-	setModalIsOpen: Dispatch<SetStateAction<boolean>>;
+	setModalIsOpen: ReactStateSetter<boolean>;
 	isActive: boolean;
-	setSelectedDoor: Dispatch<SetStateAction<number | null>>;
+	setSelectedDoor: ReactStateSetter<number | null>;
 	selectedDoor: number | null;
 	hasBeenOpened: boolean;
 	calendarDoors: DoorType[];
-	setCalendarDoors: Dispatch<React.SetStateAction<DoorType[]>>;
+	setCalendarDoors: ReactStateSetter<DoorType[]>;
 }
 const Door = (props: DoorProps) => {
 	const {

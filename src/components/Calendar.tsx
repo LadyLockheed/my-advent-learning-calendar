@@ -1,14 +1,14 @@
-import { Dispatch, SetStateAction } from 'react';
 import styles from './calendar.module.scss';
 import Door from './Door';
 import { type Door as DoorType } from '../types/door';
+import { type ReactStateSetter } from '../types/stateSetter';
 
 interface CalendarProps {
-	setModalIsOpen: Dispatch<SetStateAction<boolean>>;
+	setModalIsOpen: ReactStateSetter<boolean>;
 	modalIsOpen: boolean;
 	calendarDoors: DoorType[];
-	setCalendarDoors: Dispatch<SetStateAction<DoorType[]>>;
-	setSelectedDoor: Dispatch<SetStateAction<number | null>>;
+	setCalendarDoors: ReactStateSetter<DoorType[]>;
+	setSelectedDoor: ReactStateSetter<number | null>;
 	selectedDoor: number | null;
 }
 
