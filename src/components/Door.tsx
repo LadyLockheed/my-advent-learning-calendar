@@ -35,7 +35,7 @@ const Door = (props: DoorProps) => {
 		const date = new Date();
 
 		const currentDay = date.getDate();
-		console.log(doorNumber, currentDay);
+
 		return doorNumber === currentDay;
 	};
 
