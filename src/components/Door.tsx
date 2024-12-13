@@ -1,4 +1,5 @@
 import styles from './door.module.scss';
+import { useCallback } from 'react';
 import { updateDoorHasBeenOpenedStatus } from '../utils/doorUtils';
 import { type Door as DoorType } from '../types/door';
 import { type ReactStateSetter } from '../types/stateSetter';
@@ -39,25 +40,34 @@ const Door = (props: DoorProps) => {
 		return doorNumber === currentDay;
 	};
 
+	const handleDoorClick = useCallback(() => {
+		setModalIsOpen(true);
+		setSelectedDoor(doorNumber);
+
+		//Update when door opens first time
+		if (!hasBeenOpened) {
+			updateDoorHasBeenOpenedStatus(
+				doorNumber,
+				calendarDoors,
+				setCalendarDoors
+			);
+		}
+	}, [
+		doorNumber,
+		hasBeenOpened,
+		calendarDoors,
+		setCalendarDoors,
+		setModalIsOpen,
+		setSelectedDoor,
+	]);
+
 	return (
 		<button
 			className={`${styles.doorFrame} ${isUnlocked && styles.doorUnlocked} ${
 				isSelectedDoor() && isActive && styles.doorOpen
 			} ${hasBeenOpened && styles.doorHasBeenOpened}`}
 			disabled={!isUnlocked}
-			onClick={() => {
-				setModalIsOpen(true);
-				setSelectedDoor(doorNumber);
-
-				//Update when door opens first time
-				if (!hasBeenOpened) {
-					updateDoorHasBeenOpenedStatus(
-						doorNumber,
-						calendarDoors,
-						setCalendarDoors
-					);
-				}
-			}}
+			onClick={handleDoorClick}
 		>
 			<span
 				className={`${styles.doorNumberText} ${
