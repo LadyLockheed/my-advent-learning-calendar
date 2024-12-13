@@ -3,9 +3,12 @@ import {
 	setLocalStorageValue,
 	getLocalStorageValue,
 } from '../utils/localStorageUtils';
+import { localStorageKeys } from '../types/localStorageKey';
 
 export const initializeDoorsArray = (): Door[] => {
-	const storedDoorsArray = getLocalStorageValue<Door[]>('doorArray');
+	const storedDoorsArray = getLocalStorageValue<Door[]>(
+		localStorageKeys.doorsArrayKey
+	);
 
 	if (storedDoorsArray) {
 		const updatedUnlockedStatusDoorsArray = storedDoorsArray.map(
@@ -24,7 +27,7 @@ export const initializeDoorsArray = (): Door[] => {
 		hasBeenOpened: false,
 	}));
 
-	setLocalStorageValue('doorsArray', doorsArray);
+	setLocalStorageValue(localStorageKeys.doorsArrayKey, doorsArray);
 
 	return doorsArray;
 };

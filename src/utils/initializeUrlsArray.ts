@@ -4,16 +4,19 @@ import {
 	setLocalStorageValue,
 	getLocalStorageValue,
 } from '../utils/localStorageUtils';
+import { localStorageKeys } from '../types/localStorageKey';
 
 export const initializeUrlsArray = (): AdventUrl[] => {
-	const storedUrlsArray = getLocalStorageValue<AdventUrl[]>('urlsArray');
+	const storedUrlsArray = getLocalStorageValue<AdventUrl[]>(
+		localStorageKeys.urlsArrayKey
+	);
 
 	if (storedUrlsArray) {
 		return storedUrlsArray;
 	}
 
 	//If localstorage is empty, set urlsArray
-	setLocalStorageValue('urlsArray', adventUrlsArray);
+	setLocalStorageValue(localStorageKeys.urlsArrayKey, adventUrlsArray);
 
 	return adventUrlsArray;
 };
