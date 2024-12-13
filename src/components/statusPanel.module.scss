@@ -1,15 +1,20 @@
 @use '../styles/base' as base;
 
 .statusPanelContainer {
-	height: 7rem;
 	width: 15rem;
-	border: 1px solid red;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 0.2rem;
 	margin: 1rem;
+	color: rgb(231, 229, 229);
+	text-align: center;
+	padding: 0.5rem;
+	position: relative;
+	font-family: base.$main-font;
 }
 
 @media (min-width: base.$layout-breakpoint) {
 	.statusPanelContainer {
-		height: 15rem;
 		width: 35rem;
 		margin: 2rem;
 	}
