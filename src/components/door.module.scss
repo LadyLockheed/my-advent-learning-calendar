@@ -1,12 +1,12 @@
 @use '../styles/base' as base;
 
-//All style should start with door locked and closed
 .doorFrame {
 	all: unset;
 	height: 3rem;
 	width: 3rem;
 	align-self: center;
 	justify-self: center;
+	border: 2px solid rgba(0, 0, 0, 0.466);
 }
 
 @media (min-width: base.$layout-breakpoint) {
@@ -21,19 +21,18 @@
 
 .doorFrame:disabled {
 	cursor: auto;
-	border: 1px solid rgba(0, 0, 0, 0.466);
 }
 
 .doorUnlocked {
-	border: 1px solid black;
+	border: 2px solid black;
 }
 
 .doorOpen {
-	background-color: rgba(252, 5, 5, 0.384);
+	background-color: base.$midnigt-blue;
 }
 
 .doorHasBeenOpened {
-	border: 1px dashed black;
+	border: 2px dashed black;
 }
 
 .doorNumberText {
@@ -48,5 +47,11 @@
 }
 
 .currentDayText {
-	font-size: 3rem;
+	font-size: 2rem;
+}
+
+@media (min-width: base.$layout-breakpoint) {
+	.currentDayText {
+		font-size: 23rem;
+	}
 }
