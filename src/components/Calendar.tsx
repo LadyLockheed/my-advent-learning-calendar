@@ -24,10 +24,10 @@ const Calendar = (props: CalendarProps) => {
 
 	return (
 		<div className={styles.calendar}>
-			{calendarDoors.map(({ isUnlocked, doorNumber, hasBeenOpened }, index) => {
+			{calendarDoors.map(({ isUnlocked, doorNumber, hasBeenOpened }) => {
 				return (
 					<Door
-						key={index}
+						key={doorNumber}
 						isUnlocked={isUnlocked}
 						doorNumber={doorNumber}
 						setModalIsOpen={setModalIsOpen}
